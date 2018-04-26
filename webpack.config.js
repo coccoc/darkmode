@@ -9,7 +9,7 @@ const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 const config = {
 	entry: {
-		nightpage: './index.js'
+		darkmode: './index.js'
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
