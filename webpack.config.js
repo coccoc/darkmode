@@ -24,6 +24,10 @@ const config = {
 					presets: ["minify"]
 				}
 
+			},
+			{
+				test: /\.css$/,
+				loader: 'raw-loader'
 			}
 		]
 	},

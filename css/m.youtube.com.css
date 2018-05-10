@@ -1,0 +1,39 @@
+body,
+html {
+    background-color: #333;
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #fff;
+}
+
+.atom .ub,
+.fusion-tn .ur {
+    background-color: #8e1610;
+}
+
+.gnb, .shelf, .d, .lub .ihb, .lub .tmb, .tv {
+    background-color: #333;
+}
+
+.atom .lub .ihb {
+    border-bottom: 1px solid #444;
+}
+
+.an {
+    color: #fff;
+}
+
+.atom .ko {
+    color: #efefef;
+}
+
+.qn .iv a {
+    color: #c3c3c3;
+}
+
+.dr {
+    color: #696969;
+    border-color: #696969;
+}

@@ -1,0 +1,54 @@
+body,
+html {
+    background-color: #333333;
+    color: #f2f2f2;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #f2f2f2 !important;
+}
+
+p {
+    color: #d1d1d1 !important;
+}
+
+a {
+    color: #efefef !important;
+}
+
+.the-article .main {
+    background: #333333 !important;
+    color: #f2f2f2;
+}
+
+.the-article-body figure.video figcaption {
+    color: #c1c1c1;
+}
+
+.comment-widget .comment-editor .comment-input {
+    background: #c1c1c1;
+}
+
+.comment-widget .comment-form {
+    background: #5a5a5a;
+}
+
+.the-article .recommendation {
+    background-color: #414141;
+}
+
+.the-article-share li.btnRating {
+    background: #636363;
+}
+
+.the-article-body table.audio, .the-article-body table.panorama, .the-article-body table.picture {
+    color: #cecece !important;
+}
+
+#multi:before {
+    background: #6b5d31;
+}
+
+footer {
+    background: #222 !important;
+}

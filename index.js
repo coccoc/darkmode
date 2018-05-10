@@ -1,3 +1,7 @@
+import ExclusionHandler from './exclusion-handler'
+
+const exclusionHandler = new ExclusionHandler();
+
 const DARK_THRESHOLD = 128;
 
 const EXCLUDES = [
@@ -12,11 +16,27 @@ const ADDITIONAL_CHECK = [
 	'footer'
 ];
 
+const BACK_INVERSE_TAGS = 'img, canvas, video, [style*="background-image"]';
+
 class NightPage {
 	constructor() {
-		this.invertPage();
-		this.backInverse();
-		this.setObserver();
+		this.currentHost = this.getHost();
+
+		if (!this.isExclusiveSupport()) {
+			this.invertPage();
+			this.backInverse();
+			this.setObserver();
+		} else {
+			this.handleExclusion();
+		}
+	}
+
+	getHost() {
+		return document.location.host.replace('www.', '');
+	}
+
+	isExclusiveSupport() {
+		return exclusionHandler.isExclusion(this.currentHost);
 	}
 
 	invertPage() {
@@ -38,16 +58,16 @@ class NightPage {
 	}
 
 	backInverse() {
-		Array.from(document.querySelectorAll('img, canvas')).forEach(this._i1);
+		Array.from(document.querySelectorAll(BACK_INVERSE_TAGS)).forEach(this._i1);
 
 		Array.from(document.querySelectorAll(EXCLUDES.join(','))).forEach(el => {
 			this._i1(el);
-			Array.from(el.querySelectorAll('img, canvas')).forEach(this._i0);
+			Array.from(el.querySelectorAll(BACK_INVERSE_TAGS)).forEach(this._i0);
 		});
 
 		Array.from(document.querySelectorAll(ADDITIONAL_CHECK.join(','))).forEach(el => {
 			const styles = window.getComputedStyle(el);
-			Array.from(el.querySelectorAll('img, canvas')).forEach(this._i0);
+			Array.from(el.querySelectorAll(BACK_INVERSE_TAGS)).forEach(this._i0);
 			if (styles.backgroundColor && this._isDark(styles.backgroundColor)) {
 				this._i1(el);
 			}
@@ -71,6 +91,13 @@ class NightPage {
 
 		observer.observe(document.body, {subtree: true, childList: true});
 		*/
+	}
+
+	/**
+	 * Runs a special rule for this website
+	 */
+	handleExclusion() {
+		exclusionHandler.applyExclusion(this.currentHost);
 	}
 
 	_i1(el) {
